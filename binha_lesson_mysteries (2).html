@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mini-Mysteries – English Lesson for Binha</title>
+<style>
+:root{--bg:#f6f4ef;--card:#fff;--ink:#1f2933;--mute:#5f6c7b;--acc:#0f766e;--acc2:#e08a1e;--ok:#15803d;--bad:#b91c1c;--line:#e3ded3}
+@media (prefers-color-scheme:dark){:root{--bg:#14181c;--card:#1d2329;--ink:#eceff3;--mute:#9aa6b2;--acc:#2dd4bf;--acc2:#f5a53c;--ok:#4ade80;--bad:#f87171;--line:#2d353d}}
+*{box-sizing:border-box}
+body{margin:0;font-family:Georgia,'Segoe UI',system-ui,serif;background:var(--bg);color:var(--ink);line-height:1.55}
+header{padding:28px 20px 16px;text-align:center}
+header h1{margin:0;font-size:clamp(1.6rem,4vw,2.4rem)}
+header p{margin:6px 0 0;color:var(--mute);font-family:system-ui,sans-serif}
+.bar{height:8px;background:var(--line);max-width:760px;margin:12px auto 0;border-radius:8px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),var(--acc2));transition:width .4s}
+nav{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;padding:10px;position:sticky;top:0;background:var(--bg);z-index:5;font-family:system-ui,sans-serif}
+nav button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 12px;border-radius:20px;cursor:pointer;font-size:.9rem}
+nav button.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+nav button.done::after{content:" ✓"}
+main{max-width:800px;margin:0 auto;padding:10px 16px 60px}
+section{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+section.on{display:block}
+h2{margin-top:0;color:var(--acc)}
+h3{margin:22px 0 8px}
+.tag{display:inline-block;font-family:system-ui,sans-serif;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;background:var(--acc2);color:#fff;padding:2px 10px;border-radius:12px}
+.inst{font-family:system-ui,sans-serif;color:var(--mute);margin-top:4px}
+button.b{font-family:system-ui,sans-serif;background:var(--acc);color:#fff;border:0;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:.95rem;margin:4px 4px 4px 0}
+button.b.alt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+button.opt{display:block;width:100%;text-align:left;font:inherit;background:var(--bg);color:var(--ink);border:2px solid var(--line);padding:12px 14px;border-radius:12px;margin:8px 0;cursor:pointer}
+button.opt.sel{border-color:var(--acc);background:rgba(15,118,110,.12)}
+.clue{background:var(--bg);border-left:4px solid var(--acc2);padding:10px 14px;margin:8px 0;border-radius:8px}
+.speak{background:rgba(224,138,30,.12);border:1px dashed var(--acc2);border-radius:12px;padding:12px 16px;margin-top:14px;font-family:system-ui,sans-serif}
+.speak b{color:var(--acc2)}
+.speak ul{margin:6px 0 0;padding-left:20px}
+.phr{font-family:system-ui,sans-serif;font-size:.9rem;color:var(--mute);margin-top:8px}
+.phr span{display:inline-block;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:2px 8px;margin:2px}
+textarea,input[type=text]{width:100%;font:inherit;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+textarea{min-height:80px;margin-top:8px}
+select{font:inherit;padding:6px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);max-width:100%}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line)}
+.row>span{flex:1 1 280px}
+.fb{font-family:system-ui,sans-serif;font-weight:600;margin-left:6px}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.hide{display:none}
+details{margin-top:12px;font-family:system-ui,sans-serif}
+.teacher{border:2px solid var(--bad);border-radius:12px;padding:14px;margin-top:20px}
+.flex{display:flex;gap:10px;flex-wrap:wrap}
+.flex>button{flex:1 1 220px;text-align:center}
+@media print{nav,.bar{display:none}section{display:block!important}}
+</style>
+</head>
+<body>
+<header>
+<h1>🔍 Mini-Mysteries</h1>
+<p>An English lesson for Binha · Level B1–B2 · Topic: everyday curiosities &amp; historical puzzles</p>
+<div class="bar"><i id="prog"></i></div>
+</header>
+<nav id="nav"></nav>
+<main>
+
+<!-- 0 WARM UP -->
+<section id="s0">
+<span class="tag">Warm-up</span>
+<h2>Welcome, detective!</h2>
+<p class="inst">Today you will solve small mysteries, make guesses, and defend your opinions. Speak out loud after every activity, and don't worry about mistakes!</p>
+<h3>Warm-up questions</h3>
+<div class="clue">1. What is the biggest mystery you have ever tried to solve, big or small?</div>
+<div class="clue">2. Do you enjoy not knowing the answer, or does it bother you? Why?</div>
+<div class="clue">3. Which is more interesting to you: a mystery from the past, or a mystery that science hasn't solved yet?</div>
+<div class="speak"><b>Useful language:</b>
+<div class="phr"><span>What really fascinates me is…</span><span>I can't stand it when…</span><span>I'd say that…</span><span>To be honest,…</span></div></div>
+</section>
+
+<!-- 1 VOCAB -->
+<section id="s1">
+<span class="tag">Vocabulary matching</span>
+<h2>Detective language</h2>
+<p class="inst">For each expression, choose the correct meaning from two options. Then use each one in your own sentence out loud.</p>
+<div id="vocab"></div>
+<div id="vscore" class="fb"></div>
+<div class="speak"><b>Say it:</b> Pick three expressions and make a sentence about your own life or work.</div>
+</section>
+
+<!-- 2 GUESSING -->
+<section id="s2">
+<span class="tag">Guessing game</span>
+<h2>What is it?</h2>
+<p class="inst">Read one clue at a time. Try to guess the mystery object as early as you can. Fewer clues = better detective!</p>
+<div id="g1"></div>
+<button class="b" onclick="nextClue('g1')">Show next clue</button>
+<h3>Your guess</h3>
+<input type="text" id="gin" placeholder="It might be… / It must be…">
+<button class="b" onclick="checkGuess()">Check my guess</button><span class="fb" id="gfb"></span>
+<div class="speak"><b>Speak:</b> Explain which clue helped you most. Then choose your own object and give 3 clues to your teacher.
+<div class="phr"><span>It might be…</span><span>It can't be… because…</span><span>This clue helped me.</span></div></div>
+</section>
+
+<!-- 3 MYSTERY -->
+<section id="s3">
+<span class="tag">Mystery · problem solving</span>
+<h2>The ghost ship</h2>
+<p class="inst">In 1872 a ship called the <b>Mary Celeste</b> was found alone in the Atlantic Ocean. Reveal the evidence step by step.</p>
+<div id="g2"></div>
+<button class="b" onclick="nextClue('g2')">Reveal next evidence</button>
+
+<h3>Part A · Guessing (grammar: <i>must / might / can't</i>)</h3>
+<p class="inst">Choose the best option for each sentence.</p>
+<div id="modals"></div>
+<button class="b" onclick="checkModals()">Check</button><span class="fb" id="mfb"></span>
+
+<h3>Part B · What is your theory?</h3>
+<p class="inst">There is no single correct answer. Choose the theory you find most convincing.</p>
+<div id="theories"></div>
+<textarea placeholder="Notes before speaking: why this theory? Why not the others?"></textarea>
+<div class="speak"><b>Speak:</b>
+<ul><li>Say what you think happened. Use <i>might</i>, <i>must</i> or <i>can't</i> and give a reason with <i>because</i>.</li>
+<li>Why is it hard to be sure about something from the past?</li>
+<li><b>Optional challenge:</b> If you had a time machine, what would you want to find out?</li></ul>
+<div class="phr"><span>I think… because…</span><span>Maybe…</span><span>I'm not sure, but…</span><span>It's unlikely that…</span></div></div>
+</section>
+
+<!-- 4 AGREE -->
+<section id="s4">
+<span class="tag">Agree or disagree</span>
+<h2>Mystery or explanation?</h2>
+<p class="inst">Choose your position, then explain it. Disagreeing politely is a skill!</p>
+<div id="agree"></div>
+<div class="speak"><b>Useful expressions:</b>
+<div class="phr"><span>I agree because…</span><span>I don't agree because…</span><span>In my opinion…</span><span>It depends.</span><span>That's true, but…</span></div></div>
+</section>
+
+<!-- 5 WOULD YOU RATHER -->
+<section id="s5">
+<span class="tag">Would you rather…?</span>
+<h2>Choose your mystery</h2>
+<p class="inst">Pick one option, then answer the follow-up questions.</p>
+<div id="wyr"></div>
+</section>
+
+<!-- 6 FINAL -->
+<section id="s6">
+<span class="tag">Final challenge</span>
+<h2>Your speaking challenge</h2>
+<p class="inst">Prepare for 2 minutes, then speak for 2–3 minutes without reading.</p>
+<div class="flex">
+<button class="b alt" onclick="pickTask()">🎲 Give me a task</button>
+</div>
+<div class="clue" id="task">Press the button to get your challenge.</div>
+<textarea placeholder="Write 4–5 key words only (not full sentences)."></textarea>
+<div class="speak"><b>Structure your talk:</b>
+<ul><li>Introduce the mystery or situation.</li><li>Give the evidence or facts.</li><li>Give two possible explanations (use <i>might</i> / <i>must</i> / <i>can't</i>).</li><li>Say which you believe and why.</li></ul></div>
+<h3>Self-check</h3>
+<label><input type="checkbox"> I used at least 3 new expressions.</label><br>
+<label><input type="checkbox"> I used <i>must / might / can't</i>.</label><br>
+<label><input type="checkbox"> I gave reasons for my opinion.</label>
+<h3>Vocabulary review</h3>
+<div id="review" class="phr"></div>
+
+<button class="b alt" onclick="document.getElementById('tn').classList.toggle('hide')" style="margin-top:20px">👩‍🏫 Teacher notes (show/hide)</button>
+<div class="teacher hide" id="tn">
+<b>TEACHER ONLY – hide before screen sharing.</b>
+<ul>
+<li><b>Timing (55 min):</b> warm-up 5 · vocab 8 · guessing 7 · ghost ship 15 · agree/disagree 8 · would you rather 7 · final 5+.</li>
+<li><b>Vocabulary:</b> each word has two options and feedback appears immediately. Definitions are in the review list on the last tab (hover or tap). Ask her to use each expression in a sentence.</li>
+<li><b>Guess:</b> a mirror (accept "mirror"/"mirrors").</li>
+<li><b>Modals key (present, for guessing):</b> 1 must · 2 can't · 3 might · 4 might.</li>
+<li><b>Mary Celeste facts:</b> found Dec 1872 by the Dei Gratia; sails partly set; lifeboat missing; cargo of alcohol mostly intact (a few barrels empty); no clear sign of violence. The fate of the crew is still unknown. All theories are speculation.</li>
+<li><b>Correction focus:</b> <i>must / might / can't</i> for guessing, plus <i>because</i> to give reasons. Past forms (<i>must have gone</i>) are optional for a stronger student. Note errors while she speaks; give feedback at the end.</li>
+<li><b>Extension:</b> ask her to describe an unsolved mystery from nature or bioacoustics (e.g. a strange animal sound) as a light link to her work.</li>
+</ul></div>
+</section>
+
+<div style="text-align:center;margin-top:20px">
+<button class="b alt" onclick="go(cur-1)">← Back</button>
+<button class="b" onclick="go(cur+1)">Next →</button>
+<button class="b alt" onclick="if(confirm('Reset the whole lesson?'))location.reload()">↺ Reset</button>
+</div>
+</main>
+
+<script>
+const titles=["Warm-up","Vocabulary","Guess it","Ghost ship","Agree?","Would you rather","Final"];
+let cur=0,visited=new Set([0]);
+const nav=document.getElementById('nav');
+titles.forEach((t,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+t;b.onclick=()=>go(i);nav.appendChild(b)});
+function go(i){if(i<0||i>=titles.length)return;cur=i;visited.add(i);
+document.querySelectorAll('main>section').forEach((s,k)=>s.classList.toggle('on',k===i));
+[...nav.children].forEach((b,k)=>{b.classList.toggle('on',k===i);b.classList.toggle('done',visited.has(k)&&k!==i)});
+document.getElementById('prog').style.width=(visited.size/titles.length*100)+'%';window.scrollTo({top:0,behavior:'smooth'})}
+
+// VOCAB
+const V=[["a clue","a small piece of information that helps you find the answer","a big problem that nobody can solve"],["evidence","facts that show something is true","a place where something happens"],["to solve","to find the answer to a problem","to make a problem bigger"],["to disappear","to go away so nobody can see you","to appear suddenly"],["unlikely","probably not true","very sure to happen"],["to find out","to learn a fact you didn't know","to lose something"],["to work out","to find the answer by thinking","to ask someone for the answer"],["to look into","to try to learn more about something","to look quickly and leave"],["strange","not normal; surprising","very common and boring"],["to be sure","to know something is definitely true","to have no idea"]];
+const got={};
+document.getElementById('vocab').innerHTML=V.map((v,i)=>{const o=[[v[1],1],[v[2],0]].sort(()=>Math.random()-.5);
+return `<div class="clue"><b>${v[0]}</b><span class="fb" id="vf${i}"></span>${o.map(x=>`<button class="opt" onclick="vPick(${i},${x[1]},this)">${x[0]}</button>`).join('')}</div>`}).join('');
+function vPick(i,ok,b){const f=document.getElementById('vf'+i);
+b.parentNode.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel');
+f.textContent=ok?' ✓ Correct!':' ✗ Try the other one';f.className='fb '+(ok?'ok':'no');
+got[i]=ok;const n=Object.values(got).filter(Boolean).length;
+document.getElementById('vscore').textContent=n+' / '+V.length+' correct'}
+document.getElementById('review').innerHTML=V.map(v=>`<span title="${v[1]}">${v[0]}</span>`).join('')+'<p>Hover or tap an expression to see its meaning.</p>';
+
+// CLUES
+const C={g1:["You probably use it every morning.","It is often on a wall or in a bathroom.","It can be big or small, flat or curved.","It is usually made of glass.","When you look at it, you see yourself."],
+g2:["In 1872, people found a ship alone in the ocean. Nobody was on it.","The ship was in good condition.","The small boat (the lifeboat) was gone.","There was still food and water on the ship.","The cargo (barrels of alcohol) was still there.","There was no sign of a fight."]};
+const shown={g1:0,g2:0};
+function nextClue(id){const el=document.getElementById(id);if(shown[id]<C[id].length){const d=document.createElement('div');d.className='clue';d.innerHTML=`<b>${id=='g1'?'Clue':'Evidence'} ${shown[id]+1}:</b> ${C[id][shown[id]]}`;el.appendChild(d);shown[id]++}}
+function checkGuess(){const v=document.getElementById('gin').value.trim().toLowerCase(),f=document.getElementById('gfb');
+if(!v){f.textContent='';return}
+if(/mirror/.test(v)){f.textContent=`✓ Yes! You needed ${Math.max(shown.g1,1)} clue(s).`;f.className='fb ok'}else{f.textContent='Not quite. Show another clue!';f.className='fb no'}}
+
+// MODALS
+const M=[["The lights are on, so someone ___ be at home.","must"],["The small boat is gone, so the crew ___ be on the ship.","can't"],["I'm not sure why they left. It ___ be a storm.","might"],["Maybe they were afraid. Fear ___ be the reason.","might"]];
+document.getElementById('modals').innerHTML=M.map((m,i)=>`<div class="row"><span>${i+1}. ${m[0]}</span><select id="m${i}"><option value="">–</option><option>must</option><option>might</option><option>can't</option></select></div>`).join('');
+function checkModals(){let n=0,a=0;M.forEach((m,i)=>{const s=document.getElementById('m'+i).value;if(s){a++;if(s===m[1])n++}});
+const f=document.getElementById('mfb');f.textContent=a<M.length?'Answer all four first.':n+' / '+M.length+(n==M.length?' ✓ Great!':' – think about the evidence again.');f.className='fb '+(n==M.length&&a==M.length?'ok':'no')}
+
+// OPTION BUILDERS
+function mkOpts(id,list,multi){const el=document.getElementById(id);el.innerHTML=list.map((t,i)=>`<button class="opt" onclick="this.parentNode.querySelectorAll('.opt').forEach(b=>b.classList.remove('sel'));this.classList.add('sel')">${t}</button>`).join('')}
+mkOpts('theories',["Pirates attacked the ship.","A storm or a sea accident forced everyone into the lifeboat.","Alcohol fumes caused fear of an explosion.","Mutiny: the crew turned against the officers.","Something else (explain!)."]);
+
+// AGREE
+const A=[["Mysteries are more interesting than answers.","Why do people like strange stories?"],["It is better to know the truth, even if it is sad.","Can you give an example?"],["Technology has solved most mysteries.","Is that good or bad for curiosity?"],["It's easy to believe a surprising story.","Did you ever believe something that was not true?"]];
+document.getElementById('agree').innerHTML=A.map((a,i)=>`<div class="clue"><b>${i+1}.</b> ${a[0]}
+<div class="flex"><button class="opt" onclick="pick(this)">👍 Agree</button><button class="opt" onclick="pick(this)">🤔 Partly</button><button class="opt" onclick="pick(this)">👎 Disagree</button></div>
+<div class="phr">Follow-up: ${a[1]}</div></div>`).join('');
+function pick(b){b.parentNode.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel'));b.classList.add('sel')}
+
+// WYR
+const W=[["Would you rather… solve a famous mystery or discover a new animal?","Why? What would you do after that?"],["Would you rather… know the answer to every mystery or keep some secrets?","Is knowing everything good or boring?"],["Would you rather… have no secrets or have many mysteries around you?","How would your life change?"]];
+document.getElementById('wyr').innerHTML=W.map(w=>`<div class="clue"><b>${w[0]}</b>
+<div class="flex"><button class="opt" onclick="pick(this)">Option A (first)</button><button class="opt" onclick="pick(this)">Option B (second)</button></div>
+<div class="phr">Discuss: ${w[1]}</div></div>`).join('')+'<div class="speak"><b>Optional challenge:</b> Compare your answers with your teacher. Use <i>I would rather… because…</i></div>';
+
+// FINAL
+const T=["Tell us about a mystery you know (a place, a person, an event).","Invent a mystery: a strange event in your town. Give clues, then two possible explanations.","Tell us about a strange fact about nature or animals. What might explain it?","Imagine you find an old letter in a wall. What might it say? Who is it from?"];
+function pickTask(){document.getElementById('task').textContent='🎯 '+T[Math.floor(Math.random()*T.length)]}
+go(0);
+</script>
+</body>
+</html>
